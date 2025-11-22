@@ -6,50 +6,51 @@
     <title>Мой профиль - Библиотека №14</title>
     <style>
         .bottom-nav {
-    background: white;
-    border-top: 1px solid #e0e0e0;
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 5px;
-    margin-top: auto;
-    flex-shrink: 0;
-}
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 5px;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
 
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: #7D7D7D;
-    padding: 6px 8px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    min-width: 50px;
-    flex: 1;
-    max-width: 70px;
-}
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #7D7D7D;
+            padding: 6px 8px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            min-width: 50px;
+            flex: 1;
+            max-width: 70px;
+        }
 
-.nav-item:hover {
-    background: #f5f5f5;
-    color: #4CAF50;
-}
+        .nav-item:hover {
+            background: #f5f5f5;
+            color: #4CAF50;
+        }
 
-.nav-item.active {
-    color: #4CAF50;
-    background: #E8F5E8;
-}
+        .nav-item.active {
+            color: #4CAF50;
+            background: #E8F5E8;
+        }
 
-.nav-icon {
-    font-size: 18px;
-    margin-bottom: 3px;
-}
+        .nav-icon {
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
 
-.nav-text {
-    font-size: 10px;
-    font-weight: 500;
-    text-align: center;
-    line-height: 1.1;
-}
+        .nav-text {
+            font-size: 10px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.1;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -172,7 +173,6 @@
             align-items: flex-start;
             transition: all 0.3s ease;
             border-left: 4px solid #4CAF50;
-            position: relative;
         }
         
         .notification-card.unread {
@@ -603,14 +603,15 @@
             </div>
         </div>
         
+        <!-- ИЗМЕНЕНИЕ: Сделана активной вкладка "Профиль" по умолчанию -->
         <div class="nav-tabs">
-            <button class="nav-tab" onclick="showTab('profile')">Профиль</button>
-            <button class="nav-tab active" onclick="showTab('notifications')">Уведомления</button>
+            <button class="nav-tab active" onclick="showTab('profile')">Профиль</button>
+            <button class="nav-tab" onclick="showTab('notifications')">Уведомления</button>
         </div>
         
         <div class="content">
             <!-- Вкладка уведомлений -->
-            <div class="tab-content active" id="notificationsTab">
+            <div class="tab-content" id="notificationsTab">
                 <div class="notifications-section">
                     <div class="section-title with-badge">
                         <div style="display: flex; align-items: center; gap: 8px;">
@@ -627,7 +628,8 @@
             </div>
             
             <!-- Вкладка профиля -->
-            <div class="tab-content" id="profileTab">
+            <!-- ИЗМЕНЕНИЕ: Сделана активной по умолчанию -->
+            <div class="tab-content active" id="profileTab">
                 <!-- Профиль пользователя -->
                 <div class="profile-section">
                     <div class="avatar">
@@ -701,85 +703,87 @@
                                 </div>
                                 <div class="book-actions">
                                     <button class="action-btn">Продлить</button>
-                                    <button class="action-btn secondary">Вернуть</button>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                 <!-- Рекомендации -->
-            <div class="recommendations-section">
-                <div class="section-title">
-                    <span>⭐</span>
-                    Рекомендуем почитать
-                </div>
-                
-                <div class="books-list">
-                    <!-- Рекомендация 1 -->
-                    <div class="book-card">
-                        <div class="book-cover">ТМ</div>
-                        <div class="book-info">
-                            <div class="book-header">
-                                <div>
-                                    <div class="book-title">Три мушкетера</div>
-                                    <div class="book-author">Александр Дюма</div>
+                <!-- Рекомендации -->
+                <div class="recommendations-section">
+                    <div class="section-title">
+                        <span>⭐</span>
+                        Рекомендуем почитать
+                    </div>
+                    
+                    <div class="books-list">
+                        <!-- Рекомендация 1 -->
+                        <div class="book-card">
+                            <div class="book-cover">ТМ</div>
+                            <div class="book-info">
+                                <div class="book-header">
+                                    <div>
+                                        <div class="book-title">Три мушкетера</div>
+                                        <div class="book-author">Александр Дюма</div>
+                                    </div>
+                                    <div class="book-status">Доступна</div>
                                 </div>
-                                <div class="book-status">Доступна</div>
-                            </div>
-                            <div class="book-details">
-                                <div class="book-detail">
-                                    <span>📊</span>
-                                    Похоже на "Преступление и наказание"
+                                <div class="book-details">
+                                    <div class="book-detail">
+                                        <span>📊</span>
+                                        Похоже на "Преступление и наказание"
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="book-actions">
-                                <button class="action-btn">Забронировать</button>
+                                <div class="book-actions">
+                                    <button class="action-btn">Забронировать</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
-            <!-- Навигационное меню -->
-    <div class="bottom-nav">
-        <a href="login.html" class="nav-item">
-            <span class="nav-icon">🔐</span>
-            <span class="nav-text">Вход</span>
-        </a>
-        <a href="profil.html" class="nav-item">
-            <span class="nav-icon">👤</span>
-            <span class="nav-text">Профиль</span>
-        </a>
-        <a href="katalog.html" class="nav-item">
-            <span class="nav-icon">📚</span>
-            <span class="nav-text">Книги</span>
-        </a>
-        <a href="books.html" class="nav-item">
-            <span class="nav-icon">📖</span>
-            <span class="nav-text">История</span>
-        </a>
-        <a href="events.html" class="nav-item">
-            <span class="nav-icon">📅</span>
-            <span class="nav-text">События</span>
-        </a>
-    </div>
+        
+        <!-- Навигационное меню -->
+        <div class="bottom-nav">
+            <a href="login.html" class="nav-item">
+                <span class="nav-icon">🔐</span>
+                <span class="nav-text">Вход</span>
+            </a>
+            <a href="profil.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Профиль</span>
+            </a>
+            <a href="katalog.html" class="nav-item">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Книги</span>
+            </a>
+            <a href="books.html" class="nav-item">
+                <span class="nav-icon">📖</span>
+                <span class="nav-text">История</span>
+            </a>
+            <a href="events.html" class="nav-item">
+                <span class="nav-icon">📅</span>
+                <span class="nav-text">События</span>
+            </a>
+        </div>
     </div>
 
     <script>
         // Подсветка активной страницы
-document.addEventListener('DOMContentLoaded', function() {
-    const currentPage = window.location.pathname.split('/').pop();
-    const navItems = document.querySelectorAll('.nav-item');
-    
-    navItems.forEach(item => {
-        const href = item.getAttribute('href');
-        if (href === currentPage) {
-            item.classList.add('active');
-        }
-    });
-});
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href === currentPage) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
         // Данные уведомлений
         const notificationsData = [
             {
@@ -1003,9 +1007,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', function() {
-            renderNotifications();
+            // ИЗМЕНЕНИЕ: Не загружаем уведомления сразу, т.к. активна вкладка профиля
+            // renderNotifications();
             
-            // Анимация появления уведомлений
+            // Анимация появления уведомлений (будет работать при переходе на вкладку)
             setTimeout(() => {
                 const notifications = document.querySelectorAll('.notification-card');
                 notifications.forEach((card, index) => {
@@ -1047,5 +1052,341 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     </script>
+
+    <!-- Модальное окно редактирования профиля -->
+<div class="modal-overlay" id="editProfileModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">Редактирование профиля</div>
+            <button class="modal-close" onclick="closeEditModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <!-- Основная информация -->
+            <div class="form-section" id="personalInfoSection">
+                <div class="section-title">
+                    <span class="icon">👤</span>
+                    Основная информация
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label required">Фамилия</label>
+                    <input type="text" class="form-input" id="lastName" placeholder="Введите фамилию">
+                    <div class="error-message" id="lastNameError">Пожалуйста, введите фамилию</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label required">Имя</label>
+                    <input type="text" class="form-input" id="firstName" placeholder="Введите имя">
+                    <div class="error-message" id="firstNameError">Пожалуйста, введите имя</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Отчество</label>
+                    <input type="text" class="form-input" id="middleName" placeholder="Введите отчество">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Дата рождения</label>
+                    <input type="date" class="form-input" id="birthDate">
+                </div>
+            </div>
+            
+            <!-- Контактная информация -->
+            <div class="form-section">
+                <div class="section-title">
+                    <span class="icon">📞</span>
+                    Контактная информация
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label required">Номер телефона</label>
+                    <input type="tel" class="form-input" id="phone" placeholder="+7 (___) ___-__-__">
+                    <div class="error-message" id="phoneError">Введите корректный номер телефона</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="email" placeholder="email@example.com">
+                    <div class="error-message" id="emailError">Введите корректный email</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Адрес проживания</label>
+                    <input type="text" class="form-input" id="address" placeholder="Город, улица, дом, квартира">
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeEditModal()">Отмена</button>
+                <button class="btn btn-primary" onclick="saveProfile()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Стили для модального окна */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 12px;
+        padding: 0;
+        width: 90%;
+        max-width: 400px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+        background: #4CAF50;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .modal-title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .form-section {
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .form-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .form-label.required::after {
+        content: " *";
+        color: #f44336;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+    }
+
+    .error-message {
+        color: #f44336;
+        font-size: 12px;
+        margin-top: 5px;
+        display: none;
+    }
+
+    .form-input.error {
+        border-color: #f44336;
+    }
+
+    .modal-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+    }
+
+    .btn-primary {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #45a049;
+    }
+
+    .btn-secondary {
+        background: #f5f5f5;
+        color: #333;
+    }
+
+    .btn-secondary:hover {
+        background: #e0e0e0;
+    }
+</style>
+
+<script>
+    // Функции для модального окна
+    function openEditModal() {
+        // Заполняем форму текущими данными
+        document.getElementById('lastName').value = 'Иванов';
+        document.getElementById('firstName').value = 'Иван';
+        document.getElementById('middleName').value = 'Иванович';
+        document.getElementById('phone').value = '+7 (912) 345-67-89';
+        document.getElementById('email').value = 'ivanov@email.com';
+        document.getElementById('address').value = 'ул. Ленина, 25, кв. 14, Екатеринбург';
+        
+        // Показываем модальное окно
+        document.getElementById('editProfileModal').style.display = 'flex';
+    }
+
+    function closeEditModal() {
+        document.getElementById('editProfileModal').style.display = 'none';
+        clearErrors();
+    }
+
+    function saveProfile() {
+        // Валидация формы
+        if (validateForm()) {
+            // Получаем данные из формы
+            const lastName = document.getElementById('lastName').value;
+            const firstName = document.getElementById('firstName').value;
+            const middleName = document.getElementById('middleName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            
+            // Обновляем данные в профиле
+            document.querySelector('.profile-name').textContent = `${firstName} ${lastName}`;
+            
+            // Обновляем контактную информацию
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems[0].querySelector('div:last-child').textContent = phone;
+            contactItems[1].querySelector('div:last-child').textContent = email;
+            contactItems[2].querySelector('div:last-child').textContent = address;
+            
+            // Показываем уведомление об успешном сохранении
+            alert('Профиль успешно сохранен!');
+            
+            // Закрываем модальное окно
+            closeEditModal();
+        }
+    }
+
+    function validateForm() {
+        let isValid = true;
+        clearErrors();
+
+        // Проверка фамилии
+        const lastName = document.getElementById('lastName').value.trim();
+        if (!lastName) {
+            showError('lastName', 'Пожалуйста, введите фамилию');
+            isValid = false;
+        }
+
+        // Проверка имени
+        const firstName = document.getElementById('firstName').value.trim();
+        if (!firstName) {
+            showError('firstName', 'Пожалуйста, введите имя');
+            isValid = false;
+        }
+
+        // Проверка телефона
+        const phone = document.getElementById('phone').value.trim();
+        const phoneRegex = /^\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
+        if (!phoneRegex.test(phone)) {
+            showError('phone', 'Введите корректный номер телефона');
+            isValid = false;
+        }
+
+        // Проверка email (если заполнен)
+        const email = document.getElementById('email').value.trim();
+        if (email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('email', 'Введите корректный email');
+                isValid = false;
+            }
+        }
+
+        return isValid;
+    }
+
+    function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const errorElement = document.getElementById(fieldId + 'Error');
+        
+        field.classList.add('error');
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+    }
+
+    function clearErrors() {
+        const errorMessages = document.querySelectorAll('.error-message');
+        const errorInputs = document.querySelectorAll('.form-input.error');
+        
+        errorMessages.forEach(error => {
+            error.style.display = 'none';
+        });
+        
+        errorInputs.forEach(input => {
+            input.classList.remove('error');
+        });
+    }
+
+    // Закрытие модального окна при клике вне его
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('editProfileModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeEditModal();
+            }
+        });
+    });
+</script>
 </body>
 </html>

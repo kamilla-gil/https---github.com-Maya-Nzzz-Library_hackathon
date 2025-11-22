@@ -233,23 +233,6 @@
             color: #FF9800;
         }
         
-        .book-btn {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .book-btn:hover {
-            background: #45a049;
-            transform: translateY(-1px);
-        }
-        
         /* Результаты поиска */
         .search-results {
             margin-top: 20px;
@@ -331,75 +314,34 @@
             font-size: 12px;
             color: #5A5A5A;
             line-height: 1.4;
-            margin-bottom: 10px;
-            /* Стандартное свойство */
+            margin-bottom: 8px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            /* Для современных браузеров */
-            display: -moz-box;
-            -moz-line-clamp: 2;
-            -moz-box-orient: vertical;
-            display: box;
-            line-clamp: 2;
-            box-orient: vertical;
             overflow: hidden;
         }
         
-        .book-status {
-            background: #81C784;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
+        /* Простая отметка о наличии */
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 8px;
             font-size: 11px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            display: inline-block;
+            font-weight: 600;
         }
         
-        .book-status.available {
-            background: #4CAF50;
+        .availability-badge.available {
+            background: #E8F5E8;
+            color: #2E7D32;
+            border: 1px solid #4CAF50;
         }
         
-        .book-status.unavailable {
-            background: #f44336;
-        }
-        
-        .book-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        
-        .book-action-btn {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex: 1;
-        }
-        
-        .book-action-btn:hover {
-            background: #45a049;
-        }
-        
-        .book-action-btn.secondary {
-            background: #81C784;
-        }
-        
-        .book-action-btn.secondary:hover {
-            background: #66BB6A;
-        }
-        
-        .book-action-btn:disabled {
-            background: #BDBDBD;
-            cursor: not-allowed;
-            transform: none;
+        .availability-badge.unavailable {
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #f44336;
         }
         
         /* Скрытые элементы */
@@ -452,7 +394,7 @@
             <div class="top-books" id="topBooksSection">
                 <div class="section-title">
                     <span>🏆</span>
-                    Топ 100 книг
+                    Топ 10 книг
                 </div>
                 
                 <div id="topBooksList">
@@ -618,6 +560,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 bookElement.className = 'top-book-item fade-in';
                 bookElement.style.animationDelay = `${index * 0.1}s`;
                 
+                const availabilityIcon = book.status === 'available' ? '✅' : '❌';
+                const availabilityText = book.status === 'available' ? 'Есть в наличии' : 'Нет в наличии';
+                
                 bookElement.innerHTML = `
                     <div class="book-rank">${index + 1}</div>
                     <div class="top-book-info">
@@ -626,10 +571,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="top-book-rating">
                             ⭐ ${book.rating} • ${book.reviews} отзывов
                         </div>
+                        <div class="availability-badge ${book.status}">
+                            ${availabilityIcon} ${availabilityText}
+                        </div>
                     </div>
-                    <button class="book-btn" onclick="reserveBook(${book.id})" style="padding: 6px 12px; font-size: 11px;">
-                        📚
-                    </button>
                 `;
                 
                 topBooksList.appendChild(bookElement);
@@ -684,8 +629,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 bookElement.className = 'book-card fade-in';
                 bookElement.style.animationDelay = `${index * 0.1}s`;
                 
-                const statusClass = book.status === 'available' ? 'available' : 'unavailable';
-                const statusText = book.status === 'available' ? 'Доступна' : 'На руках';
+                const availabilityIcon = book.status === 'available' ? '✅' : '❌';
+                const availabilityText = book.status === 'available' ? 'Есть в наличии' : 'Нет в наличии';
                 
                 bookElement.innerHTML = `
                     <div class="book-cover">${book.coverText}</div>
@@ -700,60 +645,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         </div>
                         <div class="book-description">${book.description}</div>
-                        <div class="book-status ${statusClass}">${statusText}</div>
-                        <div class="book-actions">
-                            <button class="book-action-btn" onclick="reserveBook(${book.id})" ${book.status === 'unavailable' ? 'disabled' : ''}>
-                                ${book.status === 'available' ? '📚 Забронировать' : '❌ Недоступна'}
-                            </button>
-                            <button class="book-action-btn secondary" onclick="showBookDetails(${book.id})">
-                                ℹ️ Подробнее
-                            </button>
+                        <div class="availability-badge ${book.status}">
+                            ${availabilityIcon} ${availabilityText}
                         </div>
                     </div>
                 `;
                 
                 searchResultsList.appendChild(bookElement);
             });
-        }
-
-        // Бронирование книги
-        function reserveBook(bookId) {
-            const book = booksData.find(b => b.id === bookId);
-            
-            if (book.status === 'available') {
-                const button = event.target;
-                const originalText = button.textContent;
-                button.textContent = '⏳ Бронируем...';
-                button.disabled = true;
-                
-                setTimeout(() => {
-                    button.textContent = '✅ Забронирована!';
-                    button.style.background = '#81C784';
-                    
-                    setTimeout(() => {
-                        alert(`Книга "${book.title}" успешно забронирована! Заберите её в библиотеке в течение 3 дней.`);
-                        button.textContent = originalText;
-                        button.style.background = '';
-                        button.disabled = false;
-                    }, 1000);
-                }, 1500);
-            }
-        }
-
-        // Просмотр деталей книги
-        function showBookDetails(bookId) {
-            const book = booksData.find(b => b.id === bookId);
-            alert(`
-📖 ${book.title}
-
-👤 Автор: ${book.author}
-
-⭐ Рейтинг: ${book.rating}/5 (${book.reviews} отзывов)
-
-📝 Описание: ${book.description}
-
-${book.status === 'available' ? '✅ Доступна для бронирования' : '❌ В настоящее время на руках у другого читателя'}
-            `);
         }
 
         // Инициализация при загрузке
@@ -773,3 +672,4 @@ ${book.status === 'available' ? '✅ Доступна для бронирова�
     </script>
 </body>
 </html>
+ 
