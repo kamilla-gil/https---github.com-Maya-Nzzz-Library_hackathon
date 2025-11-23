@@ -600,6 +600,18 @@
             <div class="header-title" id="headerTitle">Мой профиль</div>
             <div class="header-icons">
                 <span>🔔</span>
+                <button class="logout-btn" onclick="logout()" style="
+                background: rgba(255, 255, 255, 0.2);
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                padding: 6px 12px;
+                border-radius: 15px;
+                font-size: 12px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-left: 10px;
+            ">Выйти</button>
             </div>
         </div>
         
@@ -862,6 +874,15 @@
                 ]
             }
         ];
+
+        // ФУНКЦИЯ ВЫХОДА
+        function logout() {
+            if (confirm('Вы уверены, что хотите выйти?')) {
+                localStorage.removeItem('currentUser');
+                // Перенаправляем на страницу авторизации
+                window.location.href = '../authorization.html';
+            }
+        }
 
         // Показать вкладку
         function showTab(tabName) {
